@@ -14,8 +14,8 @@ impl Default for TemplateApp {
     fn default() -> Self {
         Self {
             // Example stuff:
-            label: "Hello World!".to_owned(),
-            value: 2.7,
+            label: "nggih!".to_owned(),
+            value: 31.0,
         }
     }
 }
@@ -63,9 +63,32 @@ impl eframe::App for TemplateApp {
                 });
             });
         });
+        egui::Window::new("about")
+            .default_width(320.0)
+            .show(ctx, |ui| {
+                ui.heading("Experience");
+                ui.label("Senior Artificial Intelligence Engineer @ SRW&Co ");
+                ui.label(" -  Implemented various deep learning techniques with a focus on NLP solutions for business cases");
+
+                ui.add_space(5.0);
+                ui.label("Machine Learning Engineer (Contractor) @ Johnson&Johnson");
+                ui.label(" • Conducted research and prototyping, utilizing deep learning and machine learning techniques to address business cases.");
+                
+                ui.add_space(12.0);
+                ui.heading("Projects");
+                ui.label("E-commerce illegal wildlife trading scraping");
+                ui.label(" -  Automated the scraping process of illegal wildlife trading on e-commerce platforms using Selenium and FastAPI");
+
+                ui.add_space(12.0);
+                ui.heading("Skills");
+                ui.label("Front End: React, Next.JS, Redux, React Hook Form, Vue, Nuxt.JS");
+                ui.label("Back End: Adonis, Node, FastAPI");
+                ui.label("Machine Learning: Python, Pytorch, Tensorflow");
+
+            });
 
         egui::SidePanel::left("side_panel").show(ctx, |ui| {
-            ui.heading("Side Panel");
+            ui.heading("Side Panel Left");
 
             ui.horizontal(|ui| {
                 ui.label("Write something: ");
@@ -76,6 +99,7 @@ impl eframe::App for TemplateApp {
             if ui.button("Increment").clicked() {
                 *value += 1.0;
             }
+            ui.label(format!("Hello '{}', age {}", label, value));
 
             ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
                 ui.horizontal(|ui| {
@@ -95,14 +119,18 @@ impl eframe::App for TemplateApp {
         egui::CentralPanel::default().show(ctx, |ui| {
             // The central panel the region left after adding TopPanel's and SidePanel's
 
-            ui.heading("eframe template");
-            ui.hyperlink("https://github.com/emilk/eframe_template");
+            ui.heading("nggih");
+            ui.hyperlink("https://github.com/nggih/egui-experiment");
             ui.add(egui::github_link_file!(
                 "https://github.com/emilk/eframe_template/blob/master/",
                 "Source code."
             ));
             egui::warn_if_debug_build(ui);
+
+            if ui.button("click me").clicked() {} 
+
         });
+        
 
         if false {
             egui::Window::new("Window").show(ctx, |ui| {
